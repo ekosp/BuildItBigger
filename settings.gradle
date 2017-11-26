@@ -1,1 +1,1 @@
-include ':app', ':customjavalib', ':customandroidlibrary'
+include ':app', ':customjavalib', ':customandroidlibrary', ':backend'
