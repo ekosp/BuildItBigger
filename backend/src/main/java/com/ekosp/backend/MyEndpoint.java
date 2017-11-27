@@ -6,6 +6,7 @@
 
 package com.ekosp.backend;
 
+import com.example.JokesProvider;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -33,6 +34,17 @@ public class MyEndpoint {
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
         response.setData("Hi, " + name);
+
+        return response;
+    }
+
+    /**
+     * A simple endpoint method that takes a joke and pass it to android lib
+     */
+    @ApiMethod(name = "tellJoke")
+    public MyBean tellJoke(@Named("joke") String joke) {
+        MyBean response = new MyBean();
+        response.setData(JokesProvider.getJoke());
 
         return response;
     }

@@ -1,24 +1,22 @@
-package com.udacity.gradle.builditbigger;
+package com.ekosp.customandroidlibrary;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.ekosp.customandroidlibrary.JokesPresenter;
-import com.example.JokesProvider;
+import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class JokesPresenter extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-      //  new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+        String joke = getIntent().getExtras().getString("Joke");
+        setContentView(R.layout.jokes_presenter);
 
     }
 
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.jokes_menu, menu);
         return true;
     }
 
@@ -44,16 +42,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view) {
-        //Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
-//       Toast.makeText(this, ""+ JokesProvider.message1, Toast.LENGTH_SHORT).show();
-
-        Intent joke = new Intent(this, JokesPresenter.class);
-       // joke.putExtra("joke", JokesProvider.message1);
-        startActivity(joke);
-    }
-
-
-
 }
